@@ -4,12 +4,132 @@
 // ========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all components
+    initCookieNotice();
+    initLanguageSwitcher();
     initNavigation();
     initScrollReveal();
     initSmoothScroll();
+    initServiceFilter();
+    initFAQ();
     initParallax();
+    initGalleryLightbox();
+    initHeroVideo();
+    initStylistModal();
 });
+
+// ========================================
+// Hero Video Fallback
+// ========================================
+
+function initHeroVideo() {
+    const video = document.getElementById('hero-video');
+    if (!video) return;
+
+    // Hide video and show fallback image if video fails to load
+    video.addEventListener('error', () => {
+        video.classList.add('hidden');
+    });
+
+    // Also check if video can play
+    video.addEventListener('loadeddata', () => {
+        video.play().catch(() => {
+            video.classList.add('hidden');
+        });
+    });
+
+    // Timeout fallback - if video doesn't load in 5 seconds, hide it
+    setTimeout(() => {
+        if (video.readyState < 2) {
+            video.classList.add('hidden');
+        }
+    }, 5000);
+}
+
+// ========================================
+// Cookie Notice
+// ========================================
+
+function initCookieNotice() {
+    const cookieNotice = document.getElementById('cookie-notice');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const declineBtn = document.getElementById('cookie-decline');
+
+    if (!cookieNotice) return;
+
+    // Check if user already made a choice
+    const cookieChoice = localStorage.getItem('sila-cookies');
+
+    if (!cookieChoice) {
+        setTimeout(() => {
+            cookieNotice.classList.add('visible');
+        }, 2000);
+    } else {
+        cookieNotice.classList.add('hidden');
+    }
+
+    acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem('sila-cookies', 'accepted');
+        cookieNotice.classList.remove('visible');
+        setTimeout(() => cookieNotice.classList.add('hidden'), 500);
+    });
+
+    declineBtn?.addEventListener('click', () => {
+        localStorage.setItem('sila-cookies', 'declined');
+        cookieNotice.classList.remove('visible');
+        setTimeout(() => cookieNotice.classList.add('hidden'), 500);
+    });
+}
+
+// ========================================
+// Language Switcher
+// ========================================
+
+function initLanguageSwitcher() {
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const savedLang = localStorage.getItem('sila-lang') || 'hu';
+
+    // Set initial language
+    setLanguage(savedLang);
+
+    langBtns.forEach(btn => {
+        if (btn.dataset.lang === savedLang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            langBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            setLanguage(lang);
+            localStorage.setItem('sila-lang', lang);
+        });
+    });
+}
+
+function setLanguage(lang) {
+    document.documentElement.lang = lang;
+
+    // Update all elements with data-hu and data-en attributes
+    const elements = document.querySelectorAll('[data-hu][data-en]');
+    elements.forEach(el => {
+        const text = el.dataset[lang];
+        if (text) {
+            if (el.tagName === 'INPUT' && el.placeholder) {
+                el.placeholder = el.dataset[`placeholder${lang === 'hu' ? 'Hu' : 'En'}`] || text;
+            } else {
+                el.textContent = text;
+            }
+        }
+    });
+
+    // Update placeholders
+    const inputs = document.querySelectorAll('[data-placeholder-hu][data-placeholder-en]');
+    inputs.forEach(input => {
+        input.placeholder = input.dataset[`placeholder${lang.charAt(0).toUpperCase() + lang.slice(1)}`];
+    });
+}
 
 // ========================================
 // Navigation
@@ -22,23 +142,16 @@ function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
 
     // Scroll behavior
-    let lastScroll = 0;
-
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        // Add scrolled class
-        if (currentScroll > 100) {
+        if (window.pageYOffset > 100) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
     });
 
     // Mobile menu toggle
-    navToggle.addEventListener('click', () => {
+    navToggle?.addEventListener('click', () => {
         navToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
         document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
@@ -47,8 +160,8 @@ function initNavigation() {
     // Close mobile menu on link click
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
+            navToggle?.classList.remove('active');
+            navMenu?.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
     });
@@ -83,8 +196,11 @@ function initNavigation() {
 function initScrollReveal() {
     const revealElements = document.querySelectorAll(
         '.section-header, .about-content, .about-image, .team-member, ' +
+        '.first-visit-step, .product-card, .blog-card, ' +
         '.gallery-item, .location-content, .location-map, .cta-content, ' +
-        '.quote, .stylist-levels, .price-table-wrapper, .price-note'
+        '.quote, .stylist-levels, .price-table-wrapper, .price-note, ' +
+        '.review-card, .faq-list, .gift-card-content, ' +
+        '.instagram-feed'
     );
 
     revealElements.forEach(el => {
@@ -103,7 +219,7 @@ function initScrollReveal() {
     };
 
     window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Initial check
+    revealOnScroll();
 }
 
 // ========================================
@@ -115,9 +231,10 @@ function initSmoothScroll() {
 
     links.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-
             const targetId = link.getAttribute('href');
+            if (targetId === '#') return;
+
+            e.preventDefault();
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
@@ -134,13 +251,156 @@ function initSmoothScroll() {
     });
 }
 
+// ========================================
+// Service Filter
+// ========================================
+
+function initServiceFilter() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const tableRows = document.querySelectorAll('.price-table tbody tr');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Filter rows
+            tableRows.forEach(row => {
+                const category = row.dataset.category;
+
+                if (filter === 'all' || category === filter) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        });
+    });
+}
+
+// ========================================
+// FAQ Accordion
+// ========================================
+
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question?.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            // Close all items
+            faqItems.forEach(i => i.classList.remove('active'));
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
+// ========================================
+// Before/After Slider
+// ========================================
+
+// ========================================
+// Stylist Modal
+// ========================================
+
+function initStylistModal() {
+    const teamMembers = document.querySelectorAll('.team-member[data-stylist]');
+    const modal = document.getElementById('stylist-modal');
+    const modalBody = document.getElementById('stylist-modal-body');
+    const modalClose = document.getElementById('stylist-modal-close');
+    const stylistDataEl = document.getElementById('stylist-data');
+
+    if (!modal || !stylistDataEl) return;
+
+    let stylistData;
+    try {
+        stylistData = JSON.parse(stylistDataEl.textContent);
+    } catch (e) {
+        console.error('Failed to parse stylist data');
+        return;
+    }
+
+    const currentLang = localStorage.getItem('sila-lang') || 'hu';
+
+    const openModal = (stylistId) => {
+        const stylist = stylistData[stylistId];
+        if (!stylist) return;
+
+        const lang = localStorage.getItem('sila-lang') || 'hu';
+
+        modalBody.innerHTML = `
+            <div class="stylist-modal-image">
+                <img src="${stylist.image}" alt="${stylist.name}">
+            </div>
+            <div class="stylist-modal-info">
+                <span class="stylist-modal-level">${stylist.level}</span>
+                <h2 class="stylist-modal-name">${stylist.name}</h2>
+                <p class="stylist-modal-exp">${stylist.experience[lang]}</p>
+                <p class="stylist-modal-bio">${stylist.bio[lang]}</p>
+                <p class="stylist-modal-quote">${stylist.philosophy[lang]}</p>
+                <div class="stylist-modal-section">
+                    <h3 class="stylist-modal-section-title">${lang === 'hu' ? 'Specialitások' : 'Specialties'}</h3>
+                    <div class="stylist-modal-tags">
+                        ${stylist.specialties[lang].map(s => `<span class="stylist-modal-tag">${s}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="stylist-modal-section">
+                    <h3 class="stylist-modal-section-title">${lang === 'hu' ? 'Képzések & Tanúsítványok' : 'Training & Certifications'}</h3>
+                    <div class="stylist-modal-tags">
+                        ${stylist.certifications[lang].map(c => `<span class="stylist-modal-tag">${c}</span>`).join('')}
+                    </div>
+                </div>
+                <a href="https://sila.salonic.hu" target="_blank" rel="noopener" class="btn btn-primary stylist-modal-book">
+                    ${lang === 'hu' ? 'Foglalj hozzá' : 'Book with her'}
+                </a>
+            </div>
+        `;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+
+    teamMembers.forEach(member => {
+        member.style.cursor = 'pointer';
+        member.addEventListener('click', () => {
+            const stylistId = member.dataset.stylist;
+            openModal(stylistId);
+        });
+    });
+
+    modalClose?.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
 
 // ========================================
 // Parallax Effect
 // ========================================
 
 function initParallax() {
-    const parallaxElements = document.querySelectorAll('.hero-img, .quote-bg img');
+    const parallaxElements = document.querySelectorAll('.hero-video, .hero-img, .quote-bg img');
 
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
@@ -152,7 +412,6 @@ function initParallax() {
             const parentTop = parent.offsetTop;
             const parentHeight = parent.offsetHeight;
 
-            // Only apply parallax when element is in view
             if (scrolled > parentTop - window.innerHeight &&
                 scrolled < parentTop + parentHeight) {
                 const speed = 0.3;
@@ -164,7 +423,7 @@ function initParallax() {
 }
 
 // ========================================
-// Gallery Lightbox (Optional Enhancement)
+// Gallery Lightbox
 // ========================================
 
 function initGalleryLightbox() {
@@ -175,7 +434,6 @@ function initGalleryLightbox() {
             const img = item.querySelector('img');
             const src = img.src.replace('w=600', 'w=1200').replace('w=800', 'w=1200');
 
-            // Create lightbox
             const lightbox = document.createElement('div');
             lightbox.className = 'lightbox';
             lightbox.innerHTML = `
@@ -229,7 +487,6 @@ function initGalleryLightbox() {
             document.body.appendChild(lightbox);
             document.body.style.overflow = 'hidden';
 
-            // Close lightbox
             const closeLightbox = () => {
                 lightbox.remove();
                 document.body.style.overflow = 'auto';
@@ -241,7 +498,6 @@ function initGalleryLightbox() {
                 closeLightbox();
             });
 
-            // Close on escape key
             document.addEventListener('keydown', function escHandler(e) {
                 if (e.key === 'Escape') {
                     closeLightbox();
@@ -251,72 +507,3 @@ function initGalleryLightbox() {
         });
     });
 }
-
-// Initialize lightbox after DOM is ready
-document.addEventListener('DOMContentLoaded', initGalleryLightbox);
-
-// ========================================
-// Cursor Effect (Optional Enhancement)
-// ========================================
-
-function initCustomCursor() {
-    // Only for desktop
-    if (window.innerWidth < 1024) return;
-
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    cursor.innerHTML = '<div class="cursor-dot"></div><div class="cursor-ring"></div>';
-
-    const style = document.createElement('style');
-    style.textContent = `
-        .custom-cursor {
-            pointer-events: none;
-            position: fixed;
-            z-index: 99999;
-        }
-        .cursor-dot {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background-color: #C9A962;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease;
-        }
-        .cursor-ring {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(201, 169, 98, 0.5);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-        .custom-cursor.hover .cursor-ring {
-            transform: translate(-50%, -50%) scale(1.5);
-            border-color: #C9A962;
-        }
-        a, button {
-            cursor: none;
-        }
-    `;
-
-    document.head.appendChild(style);
-    document.body.appendChild(cursor);
-
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    // Hover effect on interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .gallery-item, .service-card');
-
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-}
-
-// Uncomment to enable custom cursor
-// document.addEventListener('DOMContentLoaded', initCustomCursor);

@@ -3,14 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SILA | Prémium Fodrászat Budapest</title>
+    <title>SILA | Prémium Fodrászat Budapest Belváros</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="SILA Prémium Fodrászat Budapest V. kerületében, az Erzsébet tér 2. szám alatt. Balayage, hajfestés, vágás. Foglalj online!">
+    <meta name="keywords" content="fodrászat, budapest, belváros, balayage, hajfestés, hajvágás, prémium, V. kerület, Erzsébet tér">
+    <meta name="author" content="SILA">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sila.hu">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sila.hu">
+    <meta property="og:title" content="SILA | Prémium Fodrászat Budapest">
+    <meta property="og:description" content="Ahol a szépség művészetté válik. Prémium fodrászat Budapest szívében.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SILA | Prémium Fodrászat Budapest">
+    <meta name="twitter:description" content="Ahol a szépség művészetté válik. Prémium fodrászat Budapest szívében.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✂%3C/text%3E%3C/svg%3E">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✂%3C/text%3E%3C/svg%3E">
 </head>
 <body>
+    <!-- Cookie Notice -->
+    <div class="cookie-notice" id="cookie-notice">
+        <p>Az oldal sütiket használ a jobb felhasználói élmény érdekében.</p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Elfogadom</button>
+            <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Elutasítom</button>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="floating-buttons">
+        <a href="tel:+36301234567" class="fab fab-phone" aria-label="Hívás">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="hu">HU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
@@ -20,12 +68,14 @@
                 <span></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#about" class="nav-link">Rólunk</a></li>
-                <li><a href="#team" class="nav-link">Csapat</a></li>
-                <li><a href="#services" class="nav-link">Árak</a></li>
-                <li><a href="#gallery" class="nav-link">Galéria</a></li>
-                <li><a href="#location" class="nav-link">Helyszín</a></li>
-                <li><a href="https://sila.salonic.hu" target="_blank" rel="noopener" class="nav-link nav-link-cta">Foglalás</a></li>
+                <li><a href="#about" class="nav-link" data-hu="Rólunk" data-en="About">Rólunk</a></li>
+                <li><a href="#team" class="nav-link" data-hu="Csapat" data-en="Team">Csapat</a></li>
+                <li><a href="#services" class="nav-link" data-hu="Árak" data-en="Prices">Árak</a></li>
+                <li><a href="#gallery" class="nav-link" data-hu="Galéria" data-en="Gallery">Galéria</a></li>
+                <li><a href="#faq" class="nav-link" data-hu="GYIK" data-en="FAQ">GYIK</a></li>
+                <li><a href="#blog" class="nav-link" data-hu="Blog" data-en="Blog">Blog</a></li>
+                <li><a href="#location" class="nav-link" data-hu="Helyszín" data-en="Location">Helyszín</a></li>
+                <li><a href="https://sila.salonic.hu" target="_blank" rel="noopener" class="nav-link nav-link-cta" data-hu="Foglalás" data-en="Book Now">Foglalás</a></li>
             </ul>
         </div>
     </nav>
@@ -33,21 +83,37 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80" alt="Luxury salon" class="hero-img">
+            <video autoplay muted loop playsinline class="hero-video" id="hero-video">
+                <source src="https://videos.pexels.com/video-files/3993440/3993440-uhd_2560_1440_30fps.mp4" type="video/mp4">
+            </video>
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80" alt="Luxury salon" class="hero-img" id="hero-fallback">
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
             <div class="hero-text">
                 <span class="hero-subtitle">Budapest V. kerület · Erzsébet tér</span>
                 <h1 class="hero-title">SILA</h1>
-                <p class="hero-tagline">Ahol a szépség művészetté válik</p>
+                <p class="hero-tagline" data-hu="Ahol a szépség művészetté válik" data-en="Where beauty becomes art">Ahol a szépség művészetté válik</p>
                 <div class="hero-line"></div>
-                <a href="https://sila.salonic.hu" target="_blank" rel="noopener" class="btn btn-primary">Időpontfoglalás</a>
+                <a href="https://sila.salonic.hu" target="_blank" rel="noopener" class="btn btn-primary" data-hu="Időpontfoglalás" data-en="Book Appointment">Időpontfoglalás</a>
             </div>
         </div>
         <div class="hero-scroll">
-            <span>Görgess</span>
+            <span data-hu="Görgess" data-en="Scroll">Görgess</span>
             <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <span class="promo-icon">🎁</span>
+                <p class="promo-text" data-hu="Hozd el a barátnőd! Mindketten 15% kedvezményt kaptok az első közös látogatáskor." data-en="Bring your friend! Both of you get 15% off on your first visit together.">
+                    <strong>Hozd el a barátnőd!</strong> Mindketten 15% kedvezményt kaptok az első közös látogatáskor.
+                </p>
+                <a href="https://sila.salonic.hu" target="_blank" rel="noopener" class="promo-btn" data-hu="Foglalj most" data-en="Book now">Foglalj most</a>
+            </div>
         </div>
     </section>
 
@@ -62,16 +128,16 @@
                     </div>
                 </div>
                 <div class="about-content">
-                    <span class="section-subtitle">Üdvözöljük</span>
-                    <h2 class="section-title">A Sila Történet</h2>
+                    <span class="section-subtitle" data-hu="Üdvözöljük" data-en="Welcome">Üdvözöljük</span>
+                    <h2 class="section-title" data-hu="A Sila Történet" data-en="The Sila Story">A Sila Történet</h2>
                     <div class="section-line"></div>
-                    <p class="about-text">
+                    <p class="about-text" data-hu="Budapest szívében, az Erzsébet tér lüktetésétől csak pár lépésre, egy elegáns belvárosi ház első emeletén rejtőzik stúdiónk. Az ablakokból az óriáskerék ikonikus sziluettje tárul elénk — egyedülálló panoráma, amely minden látogatást különlegessé tesz." data-en="In the heart of Budapest, just steps from Erzsébet Square, our studio is hidden on the first floor of an elegant downtown building. The iconic silhouette of the Ferris wheel unfolds from our windows — a unique panorama that makes every visit special.">
                         Budapest szívében, az Erzsébet tér lüktetésétől csak pár lépésre,
                         egy elegáns belvárosi ház első emeletén rejtőzik stúdiónk.
                         Az ablakokból az óriáskerék ikonikus sziluettje tárul elénk —
                         egyedülálló panoráma, amely minden látogatást különlegessé tesz.
                     </p>
-                    <p class="about-text">
+                    <p class="about-text" data-hu="A Sila nem csupán egy fodrászat. Ez egy menedék, ahol a rohanó világ megáll, és végre önmagára figyelhet. Intim lakás-stúdiónkban a személyre szabott figyelem és a prémium minőség találkozik." data-en="Sila is not just a hair salon. It's a sanctuary where the rushing world stops, and you can finally focus on yourself. In our intimate apartment-studio, personalized attention meets premium quality.">
                         A Sila nem csupán egy fodrászat. Ez egy menedék, ahol a rohanó világ
                         megáll, és végre önmagára figyelhet. Intim lakás-stúdiónkban
                         a személyre szabott figyelem és a prémium minőség találkozik.
@@ -79,17 +145,50 @@
                     <div class="about-features">
                         <div class="about-feature">
                             <span class="feature-number">01</span>
-                            <span class="feature-text">Személyre szabott konzultáció</span>
+                            <span class="feature-text" data-hu="Személyre szabott konzultáció" data-en="Personalized consultation">Személyre szabott konzultáció</span>
                         </div>
                         <div class="about-feature">
                             <span class="feature-number">02</span>
-                            <span class="feature-text">Prémium termékek</span>
+                            <span class="feature-text" data-hu="Prémium termékek" data-en="Premium products">Prémium termékek</span>
                         </div>
                         <div class="about-feature">
                             <span class="feature-number">03</span>
-                            <span class="feature-text">Intim, nyugodt légkör</span>
+                            <span class="feature-text" data-hu="Intim, nyugodt légkör" data-en="Intimate, calm atmosphere">Intim, nyugodt légkör</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- First Visit Section -->
+    <section class="first-visit section" id="first-visit">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-hu="Új vendégeinknek" data-en="For new guests">Új vendégeinknek</span>
+                <h2 class="section-title" data-hu="Első Látogatás" data-en="First Visit">Első Látogatás</h2>
+                <div class="section-line section-line-center"></div>
+            </div>
+            <div class="first-visit-grid">
+                <div class="first-visit-step">
+                    <span class="step-number">1</span>
+                    <h3 data-hu="Foglalás" data-en="Booking">Foglalás</h3>
+                    <p data-hu="Foglalj időpontot online a Salonic rendszerén keresztül. Válaszd ki a kívánt szolgáltatást és fodrászt." data-en="Book your appointment online through Salonic. Choose your desired service and stylist.">Foglalj időpontot online a Salonic rendszerén keresztül. Válaszd ki a kívánt szolgáltatást és fodrászt.</p>
+                </div>
+                <div class="first-visit-step">
+                    <span class="step-number">2</span>
+                    <h3 data-hu="Érkezés" data-en="Arrival">Érkezés</h3>
+                    <p data-hu="Érkezz 5-10 perccel korábban. Az Erzsébet tér 2. épület kapucsengőjén a SILA feliratot keresd." data-en="Arrive 5-10 minutes early. Look for SILA on the intercom at Erzsébet tér 2.">Érkezz 5-10 perccel korábban. Az Erzsébet tér 2. épület kapucsengőjén a SILA feliratot keresd.</p>
+                </div>
+                <div class="first-visit-step">
+                    <span class="step-number">3</span>
+                    <h3 data-hu="Konzultáció" data-en="Consultation">Konzultáció</h3>
+                    <p data-hu="Minden látogatás személyes konzultációval kezdődik. Megbeszéljük elképzeléseidet és tanácsot adunk." data-en="Every visit starts with a personal consultation. We discuss your ideas and give advice.">Minden látogatás személyes konzultációval kezdődik. Megbeszéljük elképzeléseidet és tanácsot adunk.</p>
+                </div>
+                <div class="first-visit-step">
+                    <span class="step-number">4</span>
+                    <h3 data-hu="Élvezd!" data-en="Enjoy!">Élvezd!</h3>
+                    <p data-hu="Dőlj hátra, lazíts, és engedd, hogy gondoskodjunk rólad. Kávé vagy tea? Nálunk minden vendég VIP." data-en="Sit back, relax, and let us take care of you. Coffee or tea? Every guest is VIP here.">Dőlj hátra, lazíts, és engedd, hogy gondoskodjunk rólad. Kávé vagy tea? Nálunk minden vendég VIP.</p>
                 </div>
             </div>
         </div>
@@ -99,56 +198,134 @@
     <section class="team section" id="team">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Ismerd meg</span>
-                <h2 class="section-title">A Csapat</h2>
+                <span class="section-subtitle" data-hu="Ismerd meg" data-en="Meet">Ismerd meg</span>
+                <h2 class="section-title" data-hu="A Csapat" data-en="The Team">A Csapat</h2>
                 <div class="section-line section-line-center"></div>
             </div>
             <div class="team-grid">
                 <!-- Stylist 1 -->
-                <div class="team-member">
+                <div class="team-member" data-stylist="anna">
                     <div class="member-image">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Senior Hairstylist">
                         <div class="member-overlay">
-                            <a href="https://sila.salonic.hu" target="_blank" rel="noopener" class="member-book">Foglalj hozzá</a>
+                            <span class="member-more" data-hu="Részletek" data-en="Details">Részletek</span>
                         </div>
                     </div>
                     <div class="member-info">
                         <span class="member-level">Senior Hairstylist</span>
                         <h3 class="member-name">Anna</h3>
-                        <p class="member-bio">
-                            10+ év tapasztalat a szalonok világában. Specialitása a precíz vágástechnikák
-                            és a természetes hatású színezések. Folyamatosan képzi magát a legújabb trendek terén.
-                        </p>
-                        <div class="member-specialties">
-                            <span>Női vágás</span>
-                            <span>Balayage</span>
-                            <span>Színezés</span>
-                        </div>
+                        <p class="member-bio-short" data-hu="10+ év tapasztalat · Balayage specialista" data-en="10+ years experience · Balayage specialist">10+ év tapasztalat · Balayage specialista</p>
                     </div>
                 </div>
 
                 <!-- Stylist 2 -->
-                <div class="team-member">
+                <div class="team-member" data-stylist="petra">
                     <div class="member-image">
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80" alt="Master Hairstylist">
                         <div class="member-overlay">
-                            <a href="https://sila.salonic.hu" target="_blank" rel="noopener" class="member-book">Foglalj hozzá</a>
+                            <span class="member-more" data-hu="Részletek" data-en="Details">Részletek</span>
                         </div>
                     </div>
                     <div class="member-info">
                         <span class="member-level member-level-master">Master Hairstylist</span>
                         <h3 class="member-name">Petra</h3>
-                        <p class="member-bio">
-                            15+ év szakmai tapasztalat, nemzetközi képzések és versenyek.
-                            A bonyolult színkorrekciók és alkalmi frizurák mestere.
-                            Kreativitása és precizitása egyedülálló.
-                        </p>
-                        <div class="member-specialties">
-                            <span>Színkorrekció</span>
-                            <span>Alkalmi frizura</span>
-                            <span>Treat.Me</span>
-                        </div>
+                        <p class="member-bio-short" data-hu="15+ év tapasztalat · Színkorrekció mester" data-en="15+ years experience · Color correction master">15+ év tapasztalat · Színkorrekció mester</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stylist Modal -->
+    <div class="stylist-modal" id="stylist-modal">
+        <div class="stylist-modal-content">
+            <button class="stylist-modal-close" id="stylist-modal-close">&times;</button>
+            <div class="stylist-modal-body" id="stylist-modal-body">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Stylist Data (hidden) -->
+    <script type="application/json" id="stylist-data">
+    {
+        "anna": {
+            "name": "Anna",
+            "level": "Senior Hairstylist",
+            "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80",
+            "experience": {
+                "hu": "10+ év szakmai tapasztalat",
+                "en": "10+ years of professional experience"
+            },
+            "bio": {
+                "hu": "Anna a Sila szalon alapító tagja, aki szenvedélyesen hisz abban, hogy minden vendég megérdemli a személyre szabott figyelmet. Pályafutását budapesti szalonokban kezdte, majd londoni továbbképzéseken csiszolta tudását a legújabb vágástechnikák és színezési trendek terén.",
+                "en": "Anna is a founding member of Sila salon who passionately believes that every guest deserves personalized attention. She started her career in Budapest salons, then refined her skills in London training courses on the latest cutting techniques and coloring trends."
+            },
+            "philosophy": {
+                "hu": "\"Számomra a fodrászat nem csak egy szakma, hanem művészet. Minden frizura egy új lehetőség, hogy kiemeljük a vendég egyéniségét.\"",
+                "en": "\"For me, hairdressing is not just a profession, but an art. Every hairstyle is a new opportunity to highlight the guest's personality.\""
+            },
+            "specialties": {
+                "hu": ["Precíz női vágások", "Balayage & ombré", "Természetes színezések", "Esküvői frizurák"],
+                "en": ["Precise women's cuts", "Balayage & ombré", "Natural coloring", "Wedding hairstyles"]
+            },
+            "certifications": {
+                "hu": ["Wella Master Colorist", "Olaplex Certified", "Balayage Academy London"],
+                "en": ["Wella Master Colorist", "Olaplex Certified", "Balayage Academy London"]
+            }
+        },
+        "petra": {
+            "name": "Petra",
+            "level": "Master Hairstylist",
+            "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80",
+            "experience": {
+                "hu": "15+ év szakmai tapasztalat",
+                "en": "15+ years of professional experience"
+            },
+            "bio": {
+                "hu": "Petra a szalon kreatív vezetője, aki nemzetközi versenyeken is bizonyított. Specialitása a komplex színkorrekciók és az alkalmi frizurák, ahol kreativitása és technikai tudása egyaránt megmutatkozik. Rendszeresen tart továbbképzéseket fiatal fodrászoknak.",
+                "en": "Petra is the creative director of the salon who has also proven herself in international competitions. Her specialty is complex color corrections and occasion hairstyles, where both her creativity and technical knowledge shine. She regularly holds training courses for young hairdressers."
+            },
+            "philosophy": {
+                "hu": "\"A tökéletes frizura az, ami összhangban van a vendég életstílusával és személyiségével. Nem elég szépnek lenni - praktikusnak is kell lennie.\"",
+                "en": "\"The perfect hairstyle is one that is in harmony with the guest's lifestyle and personality. Being beautiful is not enough - it must also be practical.\""
+            },
+            "specialties": {
+                "hu": ["Színkorrekció", "Alkalmi frizurák", "Kreatív színezések", "Treat.Me személyre szabott kezelések"],
+                "en": ["Color correction", "Occasion hairstyles", "Creative coloring", "Treat.Me personalized treatments"]
+            },
+            "certifications": {
+                "hu": ["Wella Trend Vision Finalist", "Schwarzkopf Essential Looks", "L'Oréal Color Specialist", "Treat.Me Expert"],
+                "en": ["Wella Trend Vision Finalist", "Schwarzkopf Essential Looks", "L'Oréal Color Specialist", "Treat.Me Expert"]
+            }
+        }
+    }
+    </script>
+
+    <!-- Products Section -->
+    <section class="products section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-hu="Amivel dolgozunk" data-en="What we use">Amivel dolgozunk</span>
+                <h2 class="section-title" data-hu="Prémium Termékek" data-en="Premium Products">Prémium Termékek</h2>
+                <div class="section-line section-line-center"></div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-logo">WELLA</div>
+                    <p data-hu="Professzionális hajfestékek és ápolószerek" data-en="Professional hair colors and care products">Professzionális hajfestékek és ápolószerek</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-logo">OLAPLEX</div>
+                    <p data-hu="Hajszerkezet-építő kezelések" data-en="Hair structure building treatments">Hajszerkezet-építő kezelések</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-logo">KEVIN.MURPHY</div>
+                    <p data-hu="Környezetbarát styling termékek" data-en="Eco-friendly styling products">Környezetbarát styling termékek</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-logo">MOROCCANOIL</div>
+                    <p data-hu="Argán olajos ápolás" data-en="Argan oil care">Argán olajos ápolás</p>
                 </div>
             </div>
         </div>
@@ -163,7 +340,7 @@
         <div class="container">
             <blockquote class="quote">
                 <span class="quote-mark">"</span>
-                <p>A haj a lélek tükre. Mi segítünk, hogy ragyogjon.</p>
+                <p data-hu="A haj a lélek tükre. Mi segítünk, hogy ragyogjon." data-en="Hair is the mirror of the soul. We help it shine.">A haj a lélek tükre. Mi segítünk, hogy ragyogjon.</p>
                 <span class="quote-mark quote-mark-end">"</span>
             </blockquote>
         </div>
@@ -173,9 +350,17 @@
     <section class="services section" id="services">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Amit kínálunk</span>
-                <h2 class="section-title">Szolgáltatásaink</h2>
+                <span class="section-subtitle" data-hu="Amit kínálunk" data-en="What we offer">Amit kínálunk</span>
+                <h2 class="section-title" data-hu="Szolgáltatásaink" data-en="Our Services">Szolgáltatásaink</h2>
                 <div class="section-line section-line-center"></div>
+            </div>
+
+            <!-- Service Filter -->
+            <div class="service-filter">
+                <button class="filter-btn active" data-filter="all" data-hu="Mind" data-en="All">Mind</button>
+                <button class="filter-btn" data-filter="vagas" data-hu="Vágás" data-en="Cut">Vágás</button>
+                <button class="filter-btn" data-filter="festes" data-hu="Festés" data-en="Color">Festés</button>
+                <button class="filter-btn" data-filter="kezeles" data-hu="Kezelés" data-en="Treatment">Kezelés</button>
             </div>
 
             <!-- Stylist Levels Info -->
@@ -204,112 +389,112 @@
                 <table class="price-table">
                     <thead>
                         <tr>
-                            <th class="service-col">Szolgáltatás</th>
+                            <th class="service-col" data-hu="Szolgáltatás" data-en="Service">Szolgáltatás</th>
                             <th>Senior</th>
                             <th>Master</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Hajvágás kategória -->
-                        <tr class="category-row">
+                        <tr class="category-row" data-category="vagas">
                             <td colspan="3">
-                                <span class="category-title">Hajvágás</span>
+                                <span class="category-title" data-hu="Hajvágás" data-en="Haircut">Hajvágás</span>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Férfi hajvágás</td>
-                            <td>8 000 Ft</td>
-                            <td>8 000 Ft</td>
+                        <tr data-category="vagas">
+                            <td class="service-name" data-hu="Férfi hajvágás" data-en="Men's haircut">Férfi hajvágás</td>
+                            <td data-label="Senior">8 000 Ft</td>
+                            <td data-label="Master">8 000 Ft</td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Női hajvágás</td>
-                            <td>12 500 Ft</td>
-                            <td>13 500 Ft</td>
+                        <tr data-category="vagas">
+                            <td class="service-name" data-hu="Női hajvágás" data-en="Women's haircut">Női hajvágás</td>
+                            <td data-label="Senior">12 500 Ft</td>
+                            <td data-label="Master">13 500 Ft</td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Gyerek hajvágás</td>
-                            <td>6 000 Ft</td>
-                            <td>6 000 Ft</td>
+                        <tr data-category="vagas">
+                            <td class="service-name" data-hu="Gyerek hajvágás" data-en="Kids haircut">Gyerek hajvágás</td>
+                            <td data-label="Senior">6 000 Ft</td>
+                            <td data-label="Master">6 000 Ft</td>
                         </tr>
 
                         <!-- Festés kategória -->
-                        <tr class="category-row">
+                        <tr class="category-row" data-category="festes">
                             <td colspan="3">
-                                <span class="category-title">Festés</span>
+                                <span class="category-title" data-hu="Festés" data-en="Coloring">Festés</span>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Teljes festés + vágás</td>
-                            <td>30 000 Ft</td>
-                            <td>33 000 Ft</td>
+                        <tr data-category="festes">
+                            <td class="service-name" data-hu="Teljes festés + vágás" data-en="Full color + cut">Teljes festés + vágás</td>
+                            <td data-label="Senior">30 000 Ft</td>
+                            <td data-label="Master">33 000 Ft</td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Teljes festés + szárítás</td>
-                            <td>28 000 Ft</td>
-                            <td>31 000 Ft</td>
+                        <tr data-category="festes">
+                            <td class="service-name" data-hu="Teljes festés + szárítás" data-en="Full color + blowdry">Teljes festés + szárítás</td>
+                            <td data-label="Senior">28 000 Ft</td>
+                            <td data-label="Master">31 000 Ft</td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Tőfestés + vágás</td>
-                            <td>23 000 Ft</td>
-                            <td>24 000 Ft</td>
+                        <tr data-category="festes">
+                            <td class="service-name" data-hu="Tőfestés + vágás" data-en="Root color + cut">Tőfestés + vágás</td>
+                            <td data-label="Senior">23 000 Ft</td>
+                            <td data-label="Master">24 000 Ft</td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Tőfestés + szárítás</td>
-                            <td>21 000 Ft</td>
-                            <td>22 000 Ft</td>
+                        <tr data-category="festes">
+                            <td class="service-name" data-hu="Tőfestés + szárítás" data-en="Root color + blowdry">Tőfestés + szárítás</td>
+                            <td data-label="Senior">21 000 Ft</td>
+                            <td data-label="Master">22 000 Ft</td>
                         </tr>
 
                         <!-- Balayage kategória -->
-                        <tr class="category-row">
+                        <tr class="category-row" data-category="festes">
                             <td colspan="3">
                                 <span class="category-title">Balayage & Melír</span>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-category="festes">
                             <td class="service-name">Balayage / Ombre / BabyLights + vágás</td>
-                            <td>36 000 Ft</td>
-                            <td>39 000 Ft</td>
+                            <td data-label="Senior">36 000 Ft</td>
+                            <td data-label="Master">39 000 Ft</td>
                         </tr>
-                        <tr>
+                        <tr data-category="festes">
                             <td class="service-name">Balayage / Ombre / BabyLights + szárítás</td>
-                            <td>34 000 Ft</td>
-                            <td>37 000 Ft</td>
+                            <td data-label="Senior">34 000 Ft</td>
+                            <td data-label="Master">37 000 Ft</td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Színkorrekció</td>
-                            <td>35 000 Ft</td>
-                            <td>35 000 Ft</td>
+                        <tr data-category="festes">
+                            <td class="service-name" data-hu="Színkorrekció" data-en="Color correction">Színkorrekció</td>
+                            <td data-label="Senior">35 000 Ft</td>
+                            <td data-label="Master">35 000 Ft</td>
                         </tr>
 
                         <!-- Kezelések kategória -->
-                        <tr class="category-row">
+                        <tr class="category-row" data-category="kezeles">
                             <td colspan="3">
-                                <span class="category-title">Kezelések & Egyéb</span>
+                                <span class="category-title" data-hu="Kezelések & Egyéb" data-en="Treatments & Other">Kezelések & Egyéb</span>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-category="kezeles">
                             <td class="service-name">
                                 Treat.Me kezelés
-                                <span class="service-note">Hajszerkezet erősítő/építő</span>
+                                <span class="service-note" data-hu="Hajszerkezet erősítő/építő" data-en="Hair structure building">Hajszerkezet erősítő/építő</span>
                             </td>
-                            <td>25 000 Ft</td>
-                            <td>25 000 Ft</td>
+                            <td data-label="Senior">25 000 Ft</td>
+                            <td data-label="Master">25 000 Ft</td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Mosás + Szárítás</td>
-                            <td>9 500 Ft</td>
-                            <td>9 500 Ft</td>
+                        <tr data-category="kezeles">
+                            <td class="service-name" data-hu="Mosás + Szárítás" data-en="Wash + Blowdry">Mosás + Szárítás</td>
+                            <td data-label="Senior">9 500 Ft</td>
+                            <td data-label="Master">9 500 Ft</td>
                         </tr>
-                        <tr>
-                            <td class="service-name">Próbahaj</td>
-                            <td>20 000 Ft</td>
-                            <td>20 000 Ft</td>
+                        <tr data-category="kezeles">
+                            <td class="service-name" data-hu="Próbahaj" data-en="Trial hair">Próbahaj</td>
+                            <td data-label="Senior">20 000 Ft</td>
+                            <td data-label="Master">20 000 Ft</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <p class="price-note">Az árak tájékoztató jellegűek. A végleges ár a haj hosszától és állapotától függően változhat.</p>
+            <p class="price-note" data-hu="Az árak tájékoztató jellegűek. A végleges ár a haj hosszától és állapotától függően változhat." data-en="Prices are indicative. Final price may vary depending on hair length and condition.">Az árak tájékoztató jellegűek. A végleges ár a haj hosszától és állapotától függően változhat.</p>
         </div>
     </section>
 
@@ -317,8 +502,8 @@
     <section class="gallery section" id="gallery">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Inspiráció</span>
-                <h2 class="section-title">Galéria</h2>
+                <span class="section-subtitle" data-hu="Inspiráció" data-en="Inspiration">Inspiráció</span>
+                <h2 class="section-title" data-hu="Galéria" data-en="Gallery">Galéria</h2>
                 <div class="section-line section-line-center"></div>
             </div>
             <div class="gallery-grid">
@@ -331,7 +516,7 @@
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Színezés">
                     <div class="gallery-overlay">
-                        <span>Színezés</span>
+                        <span data-hu="Színezés" data-en="Coloring">Színezés</span>
                     </div>
                 </div>
                 <div class="gallery-item">
@@ -343,13 +528,172 @@
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80" alt="Vágás">
                     <div class="gallery-overlay">
-                        <span>Vágás</span>
+                        <span data-hu="Vágás" data-en="Haircut">Vágás</span>
                     </div>
                 </div>
                 <div class="gallery-item gallery-item-tall">
                     <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80" alt="Alkalmi">
                     <div class="gallery-overlay">
-                        <span>Alkalmi</span>
+                        <span data-hu="Alkalmi" data-en="Occasion">Alkalmi</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram Feed -->
+            <div class="instagram-feed">
+                <h3 data-hu="Kövess minket Instagramon" data-en="Follow us on Instagram">Kövess minket Instagramon</h3>
+                <a href="https://www.instagram.com/sila.budapest" target="_blank" rel="noopener" class="instagram-handle">@sila.budapest</a>
+                <div class="instagram-grid">
+                    <a href="https://www.instagram.com/sila.budapest" target="_blank" rel="noopener" class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=300&q=80" alt="Instagram">
+                    </a>
+                    <a href="https://www.instagram.com/sila.budapest" target="_blank" rel="noopener" class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&q=80" alt="Instagram">
+                    </a>
+                    <a href="https://www.instagram.com/sila.budapest" target="_blank" rel="noopener" class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=300&q=80" alt="Instagram">
+                    </a>
+                    <a href="https://www.instagram.com/sila.budapest" target="_blank" rel="noopener" class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=300&q=80" alt="Instagram">
+                    </a>
+                    <a href="https://www.instagram.com/sila.budapest" target="_blank" rel="noopener" class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=300&q=80" alt="Instagram">
+                    </a>
+                    <a href="https://www.instagram.com/sila.budapest" target="_blank" rel="noopener" class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=300&q=80" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-hu="Vélemények" data-en="Reviews">Vélemények</span>
+                <h2 class="section-title" data-hu="Vendégeink mondták" data-en="What our guests say">Vendégeink mondták</h2>
+                <div class="section-line section-line-center"></div>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text" data-hu="Fantasztikus élmény volt! Anna pontosan azt hozta ki a hajamból, amit szerettem volna. A szalon hangulata is nagyon kellemes, igazi felüdülés a belváros közepén." data-en="Fantastic experience! Anna achieved exactly what I wanted with my hair. The salon atmosphere is also very pleasant, a real refreshment in the middle of downtown.">"Fantasztikus élmény volt! Anna pontosan azt hozta ki a hajamból, amit szerettem volna. A szalon hangulata is nagyon kellemes, igazi felüdülés a belváros közepén."</p>
+                    <div class="review-author">
+                        <span class="author-name">Katalin</span>
+                        <span class="review-source">Google</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text" data-hu="Petra csodát művelt a hajammal! A színkorrekció tökéletes lett, és a Treat.Me kezelés után olyan selymes a hajam, mint még soha." data-en="Petra worked wonders with my hair! The color correction was perfect, and after the Treat.Me treatment my hair is silkier than ever.">"Petra csodát művelt a hajammal! A színkorrekció tökéletes lett, és a Treat.Me kezelés után olyan selymes a hajam, mint még soha."</p>
+                    <div class="review-author">
+                        <span class="author-name">Eszter</span>
+                        <span class="review-source">Facebook</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text" data-hu="Már évek óta ide járok, és soha nem csalódtam. A csapat profi, kedves, és mindig tökéletes eredményt kapok. A kilátás az óriáskerékre csak hab a tortán!" data-en="I've been coming here for years and have never been disappointed. The team is professional, kind, and I always get perfect results. The view of the Ferris wheel is just the cherry on top!">"Már évek óta ide járok, és soha nem csalódtam. A csapat profi, kedves, és mindig tökéletes eredményt kapok. A kilátás az óriáskerékre csak hab a tortán!"</p>
+                    <div class="review-author">
+                        <span class="author-name">Réka</span>
+                        <span class="review-source">Google</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-hu="Kérdések" data-en="Questions">Kérdések</span>
+                <h2 class="section-title" data-hu="Gyakran Ismételt Kérdések" data-en="Frequently Asked Questions">Gyakran Ismételt Kérdések</h2>
+                <div class="section-line section-line-center"></div>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-hu="Hogyan tudok időpontot foglalni?" data-en="How can I book an appointment?">Hogyan tudok időpontot foglalni?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-hu="Online foglalási rendszerünkön keresztül a Salonic-on. Kattints a 'Foglalás' gombra, válaszd ki a kívánt szolgáltatást, fodrászt és időpontot. Visszaigazolást emailben kapsz." data-en="Through our online booking system on Salonic. Click the 'Book' button, select your desired service, stylist and time. You'll receive confirmation via email.">Online foglalási rendszerünkön keresztül a Salonic-on. Kattints a 'Foglalás' gombra, válaszd ki a kívánt szolgáltatást, fodrászt és időpontot. Visszaigazolást emailben kapsz.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-hu="Van parkolási lehetőség a közelben?" data-en="Is there parking nearby?">Van parkolási lehetőség a közelben?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-hu="Az Erzsébet téri mélygarázs pár perc sétára van. Utcai parkolás is elérhető, de a belvárosban korlátozott. Javasoljuk a tömegközlekedést - a Deák tér mindössze 2 perc sétára van." data-en="The Erzsébet Square underground parking is a few minutes walk away. Street parking is also available but limited in downtown. We recommend public transport - Deák Square is just 2 minutes walk.">Az Erzsébet téri mélygarázs pár perc sétára van. Utcai parkolás is elérhető, de a belvárosban korlátozott. Javasoljuk a tömegközlekedést - a Deák tér mindössze 2 perc sétára van.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-hu="Hogyan mondhatom le vagy módosíthatom az időpontomat?" data-en="How can I cancel or modify my appointment?">Hogyan mondhatom le vagy módosíthatom az időpontomat?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-hu="Kérjük, legalább 24 órával korábban jelezd lemondási szándékodat telefonon vagy a visszaigazoló emailben található linken keresztül. 24 órán belüli lemondás esetén a szolgáltatás 50%-át felszámítjuk." data-en="Please notify us of cancellation at least 24 hours in advance by phone or through the link in your confirmation email. For cancellations within 24 hours, we charge 50% of the service fee.">Kérjük, legalább 24 órával korábban jelezd lemondási szándékodat telefonon vagy a visszaigazoló emailben található linken keresztül. 24 órán belüli lemondás esetén a szolgáltatás 50%-át felszámítjuk.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-hu="Milyen fizetési módokat fogadtok el?" data-en="What payment methods do you accept?">Milyen fizetési módokat fogadtok el?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-hu="Készpénz, bankkártya (Visa, Mastercard), és Revolut. SZÉP kártyát sajnos nem tudunk elfogadni." data-en="Cash, bank card (Visa, Mastercard), and Revolut. Unfortunately, we cannot accept SZÉP card.">Készpénz, bankkártya (Visa, Mastercard), és Revolut. SZÉP kártyát sajnos nem tudunk elfogadni.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-hu="Kaphatok tanácsot, hogy mi állna jól nekem?" data-en="Can I get advice on what would suit me?">Kaphatok tanácsot, hogy mi állna jól nekem?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-hu="Természetesen! Minden látogatás személyes konzultációval kezdődik, ahol megbeszéljük az elképzeléseidet, felmérjük a hajad állapotát és javaslatokat teszünk. Hozz nyugodtan inspirációs képeket is!" data-en="Of course! Every visit starts with a personal consultation where we discuss your ideas, assess your hair condition and make suggestions. Feel free to bring inspiration photos!">Természetesen! Minden látogatás személyes konzultációval kezdődik, ahol megbeszéljük az elképzeléseidet, felmérjük a hajad állapotát és javaslatokat teszünk. Hozz nyugodtan inspirációs képeket is!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Card Section -->
+    <section class="gift-card section">
+        <div class="container">
+            <div class="gift-card-content">
+                <div class="gift-card-text">
+                    <span class="section-subtitle" data-hu="Tökéletes ajándék" data-en="Perfect gift">Tökéletes ajándék</span>
+                    <h2 class="section-title" data-hu="Ajándékutalvány" data-en="Gift Card">Ajándékutalvány</h2>
+                    <div class="section-line"></div>
+                    <p data-hu="Lepd meg szeretteidet egy különleges élménnyel! Ajándékutalványaink bármely szolgáltatásunkra beválthatók, és 6 hónapig érvényesek." data-en="Surprise your loved ones with a special experience! Our gift cards can be redeemed for any of our services and are valid for 6 months.">Lepd meg szeretteidet egy különleges élménnyel! Ajándékutalványaink bármely szolgáltatásunkra beválthatók, és 6 hónapig érvényesek.</p>
+                    <div class="gift-options">
+                        <span class="gift-option">10 000 Ft</span>
+                        <span class="gift-option">20 000 Ft</span>
+                        <span class="gift-option">50 000 Ft</span>
+                        <span class="gift-option" data-hu="Egyedi" data-en="Custom">Egyedi</span>
+                    </div>
+                    <a href="mailto:hello@sila.hu?subject=Ajándékutalvány rendelés" class="btn btn-primary" data-hu="Utalvány rendelése" data-en="Order gift card">Utalvány rendelése</a>
+                </div>
+                <div class="gift-card-visual">
+                    <div class="gift-card-mockup">
+                        <span class="gift-card-logo">SILA</span>
+                        <span class="gift-card-value">AJÁNDÉKUTALVÁNY</span>
+                        <span class="gift-card-amount">20 000 Ft</span>
                     </div>
                 </div>
             </div>
@@ -361,26 +705,24 @@
         <div class="container">
             <div class="location-grid">
                 <div class="location-content">
-                    <span class="section-subtitle">Hol talál minket</span>
-                    <h2 class="section-title">Helyszín</h2>
+                    <span class="section-subtitle" data-hu="Hol talál minket" data-en="Find us">Hol talál minket</span>
+                    <h2 class="section-title" data-hu="Helyszín" data-en="Location">Helyszín</h2>
                     <div class="section-line"></div>
-                    <p class="location-text">
+                    <p class="location-text" data-hu="Stúdiónk Budapest szívében, az Erzsébet téren található, egy gyönyörű századelős bérház első emeletén." data-en="Our studio is located in the heart of Budapest, on Erzsébet Square, on the first floor of a beautiful turn-of-the-century building.">
                         Stúdiónk Budapest szívében, az Erzsébet téren található,
                         egy gyönyörű századelős bérház első emeletén.
-                        Az intim lakás-stúdió hangulata és a lenyűgöző
-                        kilátás az óriáskerékre egyedülálló élményt nyújt.
                     </p>
                     <div class="location-details">
                         <div class="location-item">
-                            <span class="location-label">Cím</span>
+                            <span class="location-label" data-hu="Cím" data-en="Address">Cím</span>
                             <span class="location-value">1051 Budapest<br>Erzsébet tér 2.<br>1. emelet</span>
                         </div>
                         <div class="location-item">
-                            <span class="location-label">Nyitvatartás</span>
-                            <span class="location-value">Kedd - Szombat<br>10:00 - 19:00</span>
+                            <span class="location-label" data-hu="Nyitvatartás" data-en="Hours">Nyitvatartás</span>
+                            <span class="location-value" data-hu="Kedd - Szombat" data-en="Tue - Sat">Kedd - Szombat<br>10:00 - 19:00</span>
                         </div>
                         <div class="location-item">
-                            <span class="location-label">Kapcsolat</span>
+                            <span class="location-label" data-hu="Kapcsolat" data-en="Contact">Kapcsolat</span>
                             <span class="location-value">+36 30 123 4567<br>hello@sila.hu</span>
                         </div>
                     </div>
@@ -389,7 +731,7 @@
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                             <circle cx="12" cy="10" r="3"/>
                         </svg>
-                        <span>Navigálj ide</span>
+                        <span data-hu="Navigálj ide" data-en="Get directions">Navigálj ide</span>
                     </a>
                 </div>
                 <div class="location-map">
@@ -408,15 +750,64 @@
         </div>
     </section>
 
+    <!-- Blog Section -->
+    <section class="blog section" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" data-hu="Tippek & Trendek" data-en="Tips & Trends">Tippek & Trendek</span>
+                <h2 class="section-title" data-hu="Blog" data-en="Blog">Blog</h2>
+                <div class="section-line section-line-center"></div>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=600&q=80" alt="Hajápolás télen">
+                        <span class="blog-category" data-hu="Hajápolás" data-en="Hair Care">Hajápolás</span>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">2026. január 15.</span>
+                        <h3 class="blog-title" data-hu="5 tipp a téli hajápoláshoz" data-en="5 tips for winter hair care">5 tipp a téli hajápoláshoz</h3>
+                        <p class="blog-excerpt" data-hu="A hideg időjárás és a fűtött helyiségek megterhelik a hajat. Mutatjuk, hogyan őrizd meg haj egészségét télen is." data-en="Cold weather and heated rooms can damage your hair. Here's how to keep it healthy during winter.">A hideg időjárás és a fűtött helyiségek megterhelik a hajat. Mutatjuk, hogyan őrizd meg haj egészségét télen is.</p>
+                        <a href="#" class="blog-link" data-hu="Tovább olvasom" data-en="Read more">Tovább olvasom →</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=600&q=80" alt="Balayage trendek">
+                        <span class="blog-category" data-hu="Trendek" data-en="Trends">Trendek</span>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">2026. január 8.</span>
+                        <h3 class="blog-title" data-hu="2026-os balayage trendek" data-en="2026 balayage trends">2026-os balayage trendek</h3>
+                        <p class="blog-excerpt" data-hu="Az idei év a természetes, napcsókolta hatásról szól. Bemutatjuk a legmenőbb balayage technikákat." data-en="This year is all about natural, sun-kissed looks. We present the coolest balayage techniques.">Az idei év a természetes, napcsókolta hatásról szól. Bemutatjuk a legmenőbb balayage technikákat.</p>
+                        <a href="#" class="blog-link" data-hu="Tovább olvasom" data-en="Read more">Tovább olvasom →</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Olaplex kezelés">
+                        <span class="blog-category" data-hu="Kezelések" data-en="Treatments">Kezelések</span>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">2025. december 20.</span>
+                        <h3 class="blog-title" data-hu="Miért éri meg az Olaplex kezelés?" data-en="Why is Olaplex treatment worth it?">Miért éri meg az Olaplex kezelés?</h3>
+                        <p class="blog-excerpt" data-hu="A sérült haj megmentője: így működik az Olaplex és ezért ajánljuk minden vendégünknek festés mellé." data-en="The savior of damaged hair: this is how Olaplex works and why we recommend it with every color service.">A sérült haj megmentője: így működik az Olaplex és ezért ajánljuk minden vendégünknek festés mellé.</p>
+                        <a href="#" class="blog-link" data-hu="Tovább olvasom" data-en="Read more">Tovább olvasom →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta section">
         <div class="container">
             <div class="cta-content">
-                <span class="section-subtitle">Készen állsz?</span>
-                <h2 class="section-title">Foglalj időpontot</h2>
-                <p class="cta-text">Válaszd ki a számodra megfelelő időpontot online foglalási rendszerünkben.</p>
+                <span class="section-subtitle" data-hu="Készen állsz?" data-en="Ready?">Készen állsz?</span>
+                <h2 class="section-title" data-hu="Foglalj időpontot" data-en="Book an appointment">Foglalj időpontot</h2>
+                <p class="cta-text" data-hu="Válaszd ki a számodra megfelelő időpontot online foglalási rendszerünkben." data-en="Choose a convenient time in our online booking system.">Válaszd ki a számodra megfelelő időpontot online foglalási rendszerünkben.</p>
                 <a href="https://sila.salonic.hu" target="_blank" rel="noopener" class="btn btn-primary">
-                    <span>Foglalás a Salonic-on</span>
+                    <span data-hu="Foglalás a Salonic-on" data-en="Book on Salonic">Foglalás a Salonic-on</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="5" y1="12" x2="19" y2="12"/>
                         <polyline points="12 5 19 12 12 19"/>
@@ -432,15 +823,16 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <span class="footer-logo">SILA</span>
-                    <p class="footer-tagline">Prémium fodrászat<br>Budapest belvárosában</p>
+                    <p class="footer-tagline" data-hu="Prémium fodrászat Budapest belvárosában" data-en="Premium hair salon in downtown Budapest">Prémium fodrászat<br>Budapest belvárosában</p>
                     <p class="footer-address">1051 Budapest, Erzsébet tér 2.</p>
                 </div>
                 <div class="footer-links">
-                    <a href="#about">Rólunk</a>
-                    <a href="#team">Csapat</a>
-                    <a href="#services">Árak</a>
-                    <a href="#gallery">Galéria</a>
-                    <a href="#location">Helyszín</a>
+                    <a href="#about" data-hu="Rólunk" data-en="About">Rólunk</a>
+                    <a href="#team" data-hu="Csapat" data-en="Team">Csapat</a>
+                    <a href="#services" data-hu="Árak" data-en="Prices">Árak</a>
+                    <a href="#gallery" data-hu="Galéria" data-en="Gallery">Galéria</a>
+                    <a href="#faq" data-hu="GYIK" data-en="FAQ">GYIK</a>
+                    <a href="#location" data-hu="Helyszín" data-en="Location">Helyszín</a>
                 </div>
                 <div class="footer-social">
                     <a href="https://www.instagram.com/sila.budapest" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
@@ -455,10 +847,15 @@
                             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                         </svg>
                     </a>
+                    <a href="https://wa.me/36301234567" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>&copy; 2026 SILA. Minden jog fenntartva.</span>
+                <span>&copy; 2026 SILA. <span data-hu="Minden jog fenntartva." data-en="All rights reserved.">Minden jog fenntartva.</span></span>
             </div>
         </div>
     </footer>
