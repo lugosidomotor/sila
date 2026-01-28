@@ -473,83 +473,148 @@ function initParallax() {
 
 function initGalleryLightbox() {
     const galleryItems = document.querySelectorAll('.gallery-item');
+    const images = Array.from(galleryItems).map(item => item.querySelector('img').src);
+    let currentIndex = 0;
 
-    galleryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            const src = img.src.replace('w=600', 'w=1200').replace('w=800', 'w=1200');
+    const openLightbox = (index) => {
+        currentIndex = index;
+        const src = images[currentIndex];
 
-            const lightbox = document.createElement('div');
-            lightbox.className = 'lightbox';
-            lightbox.innerHTML = `
-                <div class="lightbox-content">
-                    <img src="${src}" alt="Gallery image">
-                    <button class="lightbox-close">&times;</button>
-                </div>
-            `;
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <button class="lightbox-nav lightbox-prev">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <div class="lightbox-content">
+                <img src="${src}" alt="Gallery image">
+                <button class="lightbox-close">&times;</button>
+            </div>
+            <button class="lightbox-nav lightbox-next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+        `;
 
-            lightbox.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(10, 10, 10, 0.95);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 10000;
-                cursor: pointer;
-                animation: fadeIn 0.3s ease;
-            `;
+        lightbox.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        `;
 
-            const content = lightbox.querySelector('.lightbox-content');
-            content.style.cssText = `
-                position: relative;
-                max-width: 90%;
-                max-height: 90%;
-            `;
+        const content = lightbox.querySelector('.lightbox-content');
+        content.style.cssText = `
+            position: relative;
+            max-width: 70%;
+            max-height: 90%;
+        `;
 
-            const lightboxImg = lightbox.querySelector('img');
-            lightboxImg.style.cssText = `
-                max-width: 100%;
-                max-height: 90vh;
-                object-fit: contain;
-            `;
+        const lightboxImg = lightbox.querySelector('img');
+        lightboxImg.style.cssText = `
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+        `;
 
-            const closeBtn = lightbox.querySelector('.lightbox-close');
-            closeBtn.style.cssText = `
-                position: absolute;
-                top: -2rem;
-                right: 0;
-                background: none;
-                border: none;
-                color: #C9A962;
-                font-size: 2rem;
-                cursor: pointer;
-            `;
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        closeBtn.style.cssText = `
+            position: absolute;
+            top: -2rem;
+            right: 0;
+            background: none;
+            border: none;
+            color: #C9A962;
+            font-size: 2rem;
+            cursor: pointer;
+        `;
 
-            document.body.appendChild(lightbox);
-            document.body.style.overflow = 'hidden';
+        const navBtnStyle = `
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border: 1px solid #C9A962;
+            background: rgba(13, 31, 24, 0.8);
+            color: #C9A962;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10001;
+        `;
 
-            const closeLightbox = () => {
-                lightbox.remove();
-                document.body.style.overflow = 'auto';
-            };
+        const prevBtn = lightbox.querySelector('.lightbox-prev');
+        prevBtn.style.cssText = navBtnStyle + 'left: 2rem;';
 
-            lightbox.addEventListener('click', closeLightbox);
-            closeBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                closeLightbox();
-            });
+        const nextBtn = lightbox.querySelector('.lightbox-next');
+        nextBtn.style.cssText = navBtnStyle + 'right: 2rem;';
 
-            document.addEventListener('keydown', function escHandler(e) {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                    document.removeEventListener('keydown', escHandler);
-                }
-            });
+        document.body.appendChild(lightbox);
+        document.body.style.overflow = 'hidden';
+
+        const updateImage = () => {
+            lightboxImg.style.opacity = '0';
+            setTimeout(() => {
+                lightboxImg.src = images[currentIndex];
+                lightboxImg.style.opacity = '1';
+            }, 150);
+        };
+
+        const goToPrev = (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        };
+
+        const goToNext = (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        };
+
+        const closeLightbox = () => {
+            lightbox.remove();
+            document.body.style.overflow = 'auto';
+        };
+
+        prevBtn.addEventListener('click', goToPrev);
+        nextBtn.addEventListener('click', goToNext);
+        content.addEventListener('click', (e) => e.stopPropagation());
+        lightbox.addEventListener('click', closeLightbox);
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeLightbox();
         });
+
+        const keyHandler = (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                document.removeEventListener('keydown', keyHandler);
+            } else if (e.key === 'ArrowLeft') {
+                goToPrev(e);
+            } else if (e.key === 'ArrowRight') {
+                goToNext(e);
+            }
+        };
+        document.addEventListener('keydown', keyHandler);
+    };
+
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => openLightbox(index));
     });
 }
 

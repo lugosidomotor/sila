@@ -671,6 +671,7 @@ button {
 
 .about {
     background-color: var(--green-deep);
+    padding-bottom: 5rem;
 }
 
 .about-grid {
@@ -941,7 +942,7 @@ button {
     position: relative;
     padding: 10rem 0;
     overflow: hidden;
-    margin: 5rem 0;
+    background-color: var(--green-deep);
 }
 
 .quote-bg {
@@ -1969,6 +1970,10 @@ button {
 
     .about-image {
         order: -1;
+    }
+
+    .about {
+        padding-bottom: var(--section-padding);
     }
 
     .first-visit-grid {
