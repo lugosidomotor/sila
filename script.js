@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGalleryLightbox();
     initHeroVideo();
     initStylistModal();
+    initEventTracking();
 });
 
 // ========================================
@@ -65,19 +66,49 @@ function initCookieNotice() {
         }, 2000);
     } else {
         cookieNotice.classList.add('hidden');
+        // Enable analytics if accepted
+        if (cookieChoice === 'accepted') {
+            enableAnalytics();
+        }
     }
 
     acceptBtn?.addEventListener('click', () => {
         localStorage.setItem('sila-cookies', 'accepted');
         cookieNotice.classList.remove('visible');
         setTimeout(() => cookieNotice.classList.add('hidden'), 500);
+        enableAnalytics();
+        trackEvent('cookie_consent', 'accept');
     });
 
     declineBtn?.addEventListener('click', () => {
         localStorage.setItem('sila-cookies', 'declined');
         cookieNotice.classList.remove('visible');
         setTimeout(() => cookieNotice.classList.add('hidden'), 500);
+        disableAnalytics();
     });
+}
+
+// Enable Google Analytics tracking
+function enableAnalytics() {
+    if (typeof window['ga-disable-G-XXXXXXXXXX'] !== 'undefined') {
+        window['ga-disable-G-XXXXXXXXXX'] = false;
+    }
+}
+
+// Disable Google Analytics tracking
+function disableAnalytics() {
+    window['ga-disable-G-XXXXXXXXXX'] = true;
+}
+
+// Track custom events
+function trackEvent(eventName, eventAction, eventLabel = null, eventValue = null) {
+    if (typeof gtag === 'function' && localStorage.getItem('sila-cookies') === 'accepted') {
+        gtag('event', eventAction, {
+            'event_category': eventName,
+            'event_label': eventLabel,
+            'value': eventValue
+        });
+    }
 }
 
 // ========================================
@@ -400,25 +431,39 @@ function initStylistModal() {
 // ========================================
 
 function initParallax() {
-    const parallaxElements = document.querySelectorAll('.hero-video, .hero-img, .quote-bg img');
+    const heroImg = document.querySelector('.hero-img');
+    const quoteImg = document.querySelector('.quote-bg img');
 
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
 
-        parallaxElements.forEach(el => {
-            const parent = el.closest('section') || el.closest('.hero');
-            if (!parent) return;
-
-            const parentTop = parent.offsetTop;
-            const parentHeight = parent.offsetHeight;
-
-            if (scrolled > parentTop - window.innerHeight &&
-                scrolled < parentTop + parentHeight) {
-                const speed = 0.3;
-                const yPos = (scrolled - parentTop) * speed;
-                el.style.transform = `translateY(${yPos}px) scale(1.1)`;
+        // Hero parallax
+        if (heroImg) {
+            const heroSection = heroImg.closest('.hero');
+            if (heroSection && scrolled < heroSection.offsetHeight) {
+                const yPos = scrolled * 0.3;
+                heroImg.style.transform = `translateY(${yPos}px) scale(1.1)`;
             }
-        });
+        }
+
+        // Quote parallax
+        if (quoteImg) {
+            const quoteSection = quoteImg.closest('.quote-section');
+            if (quoteSection) {
+                const sectionTop = quoteSection.offsetTop;
+                const sectionHeight = quoteSection.offsetHeight;
+                const viewportHeight = window.innerHeight;
+
+                if (scrolled > sectionTop - viewportHeight &&
+                    scrolled < sectionTop + sectionHeight) {
+                    // Calculate progress through the section (0 to 1)
+                    const progress = (scrolled - sectionTop + viewportHeight) / (sectionHeight + viewportHeight);
+                    // Move image more (max 150px movement)
+                    const yPos = (progress - 0.5) * 150;
+                    quoteImg.style.transform = `translateY(${yPos}px)`;
+                }
+            }
+        }
     });
 }
 
@@ -504,6 +549,73 @@ function initGalleryLightbox() {
                     document.removeEventListener('keydown', escHandler);
                 }
             });
+        });
+    });
+}
+
+// ========================================
+// Event Tracking (Google Analytics)
+// ========================================
+
+function initEventTracking() {
+    // Track CTA button clicks
+    document.querySelectorAll('.btn-primary, .nav-link-cta').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const label = btn.textContent.trim() || btn.getAttribute('aria-label');
+            trackEvent('cta_click', 'click', label);
+        });
+    });
+
+    // Track phone calls
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', () => {
+            trackEvent('phone_call', 'click', link.href);
+        });
+    });
+
+    // Track email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', () => {
+            trackEvent('email_click', 'click', link.href);
+        });
+    });
+
+    // Track outbound links
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        link.addEventListener('click', () => {
+            trackEvent('outbound_link', 'click', link.href);
+        });
+    });
+
+    // Track navigation clicks
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const section = link.getAttribute('href');
+            trackEvent('navigation', 'click', section);
+        });
+    });
+
+    // Track language switch
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            trackEvent('language_switch', 'click', btn.dataset.lang);
+        });
+    });
+
+    // Track scroll depth
+    let scrollMarks = [25, 50, 75, 100];
+    let scrollTracked = [];
+
+    window.addEventListener('scroll', () => {
+        const scrollPercent = Math.round(
+            (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+        );
+
+        scrollMarks.forEach(mark => {
+            if (scrollPercent >= mark && !scrollTracked.includes(mark)) {
+                scrollTracked.push(mark);
+                trackEvent('scroll_depth', 'scroll', `${mark}%`);
+            }
         });
     });
 }

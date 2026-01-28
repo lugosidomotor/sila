@@ -1,0 +1,12 @@
+# AI Training Opt-Out Notice
+
+User-agent: *
+
+# This website opts out of AI training data collection.
+# The content on sila.hu is copyrighted and should not be used
+# for training artificial intelligence or machine learning models
+# without explicit permission.
+
+# Contact for licensing inquiries: deak@sila.hu
+
+Disallow-AI-Training: yes

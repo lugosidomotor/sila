@@ -1,0 +1,27 @@
+{
+    "name": "SILA - Prémium Fodrászat Budapest",
+    "short_name": "SILA",
+    "description": "Prémium fodrászat Budapest belvárosában",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0D1F18",
+    "theme_color": "#0D1F18",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "images/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["beauty", "lifestyle"],
+    "lang": "hu",
+    "dir": "ltr"
+}

@@ -1,0 +1,16 @@
+# SILA - Premium Hair Salon Budapest
+# https://sila.hu
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sila.hu/sitemap.xml
+
+# Disallow admin/private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Crawl delay (optional, be nice to servers)
+Crawl-delay: 1
