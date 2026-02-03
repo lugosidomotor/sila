@@ -1,11 +1,11 @@
 # SILA - Premium Hair Salon Budapest
-# https://sila.hu
+# https://silahair.com
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://sila.hu/sitemap.xml
+Sitemap: https://silahair.com/sitemap.xml
 
 # Disallow admin/private areas (if any)
 Disallow: /admin/

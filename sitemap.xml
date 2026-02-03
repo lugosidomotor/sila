@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://sila.hu/</loc>
-    <xhtml:link rel="alternate" hreflang="hu" href="https://sila.hu/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://sila.hu/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://sila.hu/"/>
+    <loc>https://silahair.com/</loc>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://silahair.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://silahair.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://silahair.com/"/>
     <lastmod>2026-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
