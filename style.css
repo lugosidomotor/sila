@@ -41,7 +41,9 @@
    Reset & Base
 ======================================== */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -115,6 +117,7 @@ button {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -411,7 +414,7 @@ button {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: var(--transition-medium);
 }
 
@@ -489,12 +492,10 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(13, 31, 24, 0.7) 0%,
-        rgba(13, 31, 24, 0.5) 50%,
-        rgba(13, 31, 24, 0.8) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(13, 31, 24, 0.7) 0%,
+            rgba(13, 31, 24, 0.5) 50%,
+            rgba(13, 31, 24, 0.8) 100%);
 }
 
 .hero-content {
@@ -570,10 +571,13 @@ button {
 }
 
 @keyframes scrollLine {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scaleY(1);
         opacity: 1;
     }
+
     50% {
         transform: scaleY(0.5);
         opacity: 0.5;
@@ -1545,6 +1549,14 @@ button {
     font-size: 0.9rem;
     line-height: 1.6;
     color: var(--cream);
+}
+
+.location-value a {
+    transition: var(--transition-fast);
+}
+
+.location-value a:hover {
+    color: var(--gold);
 }
 
 .location-nav-btn {
