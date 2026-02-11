@@ -155,64 +155,9 @@
     }
     </script>
 
-    <!-- Google Analytics 4 (replace G-XXXXXXXXXX with your ID) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EB5Q4L2TM"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-3EB5Q4L2TM', {
-            'anonymize_ip': true,
-            'cookie_flags': 'SameSite=None;Secure'
-        });
-
-        // Wait for cookie consent before tracking
-        if (localStorage.getItem('sila-cookies') !== 'accepted') {
-            window['ga-disable-G-3EB5Q4L2TM'] = true;
-        }
-    </script>
 
     <!-- Google Search Console Verification (replace with your code) -->
     <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">
-
-    <!-- Meta Pixel Code -->
-    <script>
-        !(function (f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-
-            n = f.fbq = function () {
-                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-            };
-
-            if (!f._fbq) f._fbq = n;
-
-            n.push = n;
-            n.loaded = true;
-            n.version = "2.0";
-            n.queue = [];
-
-            t = b.createElement(e);
-            t.async = true;
-            t.src = v;
-
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s);
-        })(
-            window,
-            document,
-            "script",
-            "https://connect.facebook.net/en_US/fbevents.js"
-        );
-
-        fbq("init", "1635451847653204");
-        fbq("track", "PageView");
-    </script>
-
-    <noscript>
-        <img height="1" width="1" style="display: none"
-            src="https://www.facebook.com/tr?id=1635451847653204&ev=PageView&noscript=1" />
-    </noscript>
-    <!-- End Meta Pixel Code -->
 
 </head>
 
@@ -223,6 +168,7 @@
     <!-- Cookie Notice -->
     <div class="cookie-notice" id="cookie-notice" role="dialog" aria-labelledby="cookie-title"
         aria-describedby="cookie-desc">
+        <h3 id="cookie-title" class="sr-only">Süti tájékoztató</h3>
         <p id="cookie-desc">Az oldal sütiket használ a jobb felhasználói élmény érdekében.</p>
         <div class="cookie-buttons">
             <button class="cookie-btn cookie-btn-accept" id="cookie-accept"
@@ -278,7 +224,8 @@
         <section class="hero" id="hero" aria-label="Bemutatkozás">
             <div class="hero-bg">
                 <img src="images/image1.webp" alt="SILA Prémium Fodrászat szalonja Budapesten, elegáns belső tér"
-                    class="hero-img" id="hero-fallback" loading="eager">
+                    class="hero-img" id="hero-fallback" loading="eager" fetchpriority="high" decoding="async"
+                    width="1600" height="900">
                 <div class="hero-overlay" aria-hidden="true"></div>
             </div>
             <div class="hero-content">
@@ -529,6 +476,40 @@
     </footer>
 
     <script src="script.js?v=8"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EB5Q4L2TM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-3EB5Q4L2TM', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+
+        if (localStorage.getItem('sila-cookies') !== 'accepted') {
+            window['ga-disable-G-3EB5Q4L2TM'] = true;
+        }
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+            if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = true; n.version = "2.0"; n.queue = [];
+            t = b.createElement(e); t.async = true; t.src = v;
+            s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", "1635451847653204");
+        fbq("track", "PageView");
+    </script>
+    <noscript><img height="1" width="1" style="display: none"
+            src="https://www.facebook.com/tr?id=1635451847653204&ev=PageView&noscript=1" /></noscript>
+
+
 </body>
 
 </html>
